@@ -37,7 +37,7 @@ The script will install the application in the following destinations if you hav
 - ~/.tarball-installations/floorp
 - ~/.local/bin/floorp
 - ~/.local/share/applications/floorp.desktop
-- Also wherever the app data may be at(app decides it and it may change, also may depend on machine your configuration)
+- Also wherever the app data may be at(app decides it and it may change, also may depend on your machine configuration)
 
 ## Tested Distros
 
