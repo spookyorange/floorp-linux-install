@@ -4,8 +4,8 @@ app_name=floorp
 literal_name_of_installation_directory=".tarball-installations"
 universal_path_for_installation_directory="$HOME/$literal_name_of_installation_directory"
 app_installation_directory="$universal_path_for_installation_directory/floorp"
-official_package_location="https://github.com/Floorp-Projects/Floorp/releases/download/v11.15.0/floorp-11.15.0.linux-x86_64.tar.bz2"
-tar_location=$(mktemp /tmp/floorp.XXXXXX.tar.bz2)
+official_package_location="https://github.com/Floorp-Projects/Floorp/releases/download/v12.0.15/floorp-linux-amd64.tar.xz"
+tar_location=$(mktemp /tmp/floorp.XXXXXX.tar.xz)
 open_tar_application_data_location="floorp"
 local_bin_path="$HOME/.local/bin"
 local_application_path="$HOME/.local/share/applications"
@@ -45,7 +45,8 @@ else
     exit
 fi
 
-tar -xvjf $tar_location
+# using -J flag for xz compression
+tar -xvJf $tar_location 
 
 echo "Installed and untarred successfully"
 
