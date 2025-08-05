@@ -4,6 +4,9 @@ A script to easily install Floorp the tarball way on your Linux machine!
 
 Note: This installation script is by no means affiliated with Floorp project, or its maintainers.
 
+Note 2: This installation script is modified to install 12 version of floorp. (old 11 version uses depricated 
+mechanisms and no longer supported) 
+
 ## Usage
 
 Clone the repo and run the script
