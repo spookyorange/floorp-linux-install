@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 app_name=floorp
@@ -103,6 +104,12 @@ Exec=$executable_path --ProfileManager
 " >> $desktop_in_local_applications
 
 echo "Created desktop entry successfully"
+
+sleep 1
+
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.tarball-installations/floorp/' >> $HOME/.bashrc
+
+echo "Added shared Floorp libraries into shared libraries dynamic PATH"
 
 sleep 1
 
