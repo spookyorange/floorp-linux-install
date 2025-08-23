@@ -13,7 +13,8 @@ local_application_path="$HOME/.local/share/applications"
 app_bin_in_local_bin="$local_bin_path/$app_name"
 desktop_in_local_applications="$local_application_path/$app_name.desktop"
 icon_path="$app_installation_directory/browser/chrome/icons/default/default128.png"
-executable_path=$app_installation_directory/floorp
+# this executable path ensures correct libraries scope for program
+executable_path="env LD_LIBRARY_PATH=$app_installation_directory:$LD_LIBRARY_PATH $app_installation_directory/floorp"
 
 echo "Welcome to Floorp tarball installer, just chill and wait for the installation to complete!"
 
@@ -94,6 +95,7 @@ Categories=Network;WebBrowser;
 Actions=new-window;new-private-window;profile-manager-window;
 [Desktop Action new-window]
 Name=Open a New Window
+WorkingDirectory=$app_installation_directory
 Exec=$executable_path --new-window %u
 [Desktop Action new-private-window]
 Name=Open a New Private Window
@@ -104,12 +106,6 @@ Exec=$executable_path --ProfileManager
 " >> $desktop_in_local_applications
 
 echo "Created desktop entry successfully"
-
-sleep 1
-
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.tarball-installations/floorp/' >> $HOME/.bashrc
-
-echo "Added shared Floorp libraries into shared libraries dynamic PATH"
 
 sleep 1
 
