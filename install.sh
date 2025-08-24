@@ -1,18 +1,20 @@
+
 #!/bin/bash
 
 app_name=floorp
 literal_name_of_installation_directory=".tarball-installations"
 universal_path_for_installation_directory="$HOME/$literal_name_of_installation_directory"
 app_installation_directory="$universal_path_for_installation_directory/floorp"
-official_package_location="https://github.com/Floorp-Projects/Floorp/releases/download/v11.15.0/floorp-11.15.0.linux-x86_64.tar.bz2"
-tar_location=$(mktemp /tmp/floorp.XXXXXX.tar.bz2)
+official_package_location="https://github.com/Floorp-Projects/Floorp/releases/download/v12.0.15/floorp-linux-amd64.tar.xz"
+tar_location=$(mktemp /tmp/floorp.XXXXXX.tar.xz)
 open_tar_application_data_location="floorp"
 local_bin_path="$HOME/.local/bin"
 local_application_path="$HOME/.local/share/applications"
 app_bin_in_local_bin="$local_bin_path/$app_name"
 desktop_in_local_applications="$local_application_path/$app_name.desktop"
 icon_path="$app_installation_directory/browser/chrome/icons/default/default128.png"
-executable_path=$app_installation_directory/floorp
+# this executable path ensures correct libraries scope for program
+executable_path="env LD_LIBRARY_PATH=$app_installation_directory:$LD_LIBRARY_PATH $app_installation_directory/floorp"
 
 echo "Welcome to Floorp tarball installer, just chill and wait for the installation to complete!"
 
@@ -45,7 +47,8 @@ else
     exit
 fi
 
-tar -xvjf $tar_location
+# using -J flag for xz compression
+tar -xvJf $tar_location 
 
 echo "Installed and untarred successfully"
 
@@ -92,6 +95,7 @@ Categories=Network;WebBrowser;
 Actions=new-window;new-private-window;profile-manager-window;
 [Desktop Action new-window]
 Name=Open a New Window
+WorkingDirectory=$app_installation_directory
 Exec=$executable_path --new-window %u
 [Desktop Action new-private-window]
 Name=Open a New Private Window

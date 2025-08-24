@@ -4,6 +4,9 @@ A script to easily install Floorp the tarball way on your Linux machine!
 
 Note: This installation script is by no means affiliated with Floorp project, or its maintainers.
 
+Note 2: This installation script installs 12 version of floorp. (old 11 version based on
+Firefox ESR 128 which is no longer supported) 
+
 ## Usage
 
 Clone the repo and run the script
@@ -43,6 +46,8 @@ The script will install the application in the following destinations if you hav
 
 - Fedora by Spookyorange
 - SteamOS(Steam Deck) by Spookyorange
+- Ubuntu 22.04 by ned8800
+- PopOS 22.04 by ned8800
 
 ## Contributing
 
