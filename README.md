@@ -44,7 +44,7 @@ The script will install the application in the following destinations if you hav
 
 ## Tested Distros
 
-- Fedora by Spookyorange
+- Fedora by Spookyorange(with Fedora 42), trfoster(with Fedora 43)
 - SteamOS(Steam Deck) by Spookyorange
 - Ubuntu 22.04 by ned8800
 - PopOS 22.04 by ned8800
